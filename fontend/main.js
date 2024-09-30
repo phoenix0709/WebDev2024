@@ -1,146 +1,173 @@
-// Get modal elements
-const taskModal = document.getElementById('taskModal');
-const addTaskBtn = document.getElementById('addTaskBtn');
-const closeModalBtn = document.getElementsByClassName('close')[0];
-const taskForm = document.getElementById('taskForm');
-const taskList = document.getElementById('taskList');
+document.addEventListener('DOMContentLoaded', function() {
+    setupDateControls();
+    loadCalendar(new Date());
+    setupTaskModal();
+    setupPopupCloseEvent();
+});
 
-// Open modal
-addTaskBtn.onclick = function() {
-    taskModal.style.display = 'block';
+let tasks = {};  // Object to store tasks with date keys
+
+// Initialize date navigation controls
+function setupDateControls() {
+    const datePicker = document.getElementById('date-picker');
+    const today = new Date();
+    datePicker.valueAsDate = today;
+    
+    const prevBtn = document.getElementById('prev-period-btn');
+    const nextBtn = document.getElementById('next-period-btn');
+    
+    prevBtn.addEventListener('click', () => changePeriod(-1));
+    nextBtn.addEventListener('click', () => changePeriod(1));
 }
 
-// Close modal
-closeModalBtn.onclick = function() {
-    taskModal.style.display = 'none';
+// Handle changing period (month view only)
+function changePeriod(change) {
+    const datePicker = document.getElementById('date-picker');
+    let currentDate = new Date(datePicker.value);
+    
+    currentDate.setMonth(currentDate.getMonth() + change);
+    
+    datePicker.valueAsDate = currentDate;
+    loadCalendar(currentDate);
 }
 
-// Close modal if user clicks outside the modal
-window.onclick = function(event) {
-    if (event.target == taskModal) {
-        taskModal.style.display = 'none';
+// Load the month view calendar
+function loadCalendar(date) {
+    const dayLabelsContainer = document.querySelector('.day-labels');
+    const calendarGrid = document.querySelector('.calendar-grid');
+    dayLabelsContainer.innerHTML = '';  // Clear previous labels
+    calendarGrid.innerHTML = '';  // Clear previous calendar days
+
+    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+
+    // Create day labels (Sun, Mon, etc.)
+    daysOfWeek.forEach(day => {
+        const label = document.createElement('div');
+        label.textContent = day;
+        dayLabelsContainer.appendChild(label);
+    });
+
+    const year = date.getFullYear();
+    const month = date.getMonth();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
+    const firstDayOfWeek = new Date(year, month, 1).getDay();
+    const today = new Date();  // Get today's date for comparison
+    
+    // Add empty cells for the days of the previous month
+    for (let i = 0; i < firstDayOfWeek; i++) {
+        const emptyCell = document.createElement('div');
+        emptyCell.classList.add('day');
+        calendarGrid.appendChild(emptyCell);
+    }
+
+    // Generate day cells for the current month
+    for (let day = 1; day <= daysInMonth; day++) {
+        const dayCell = document.createElement('div');
+        dayCell.classList.add('day');
+        dayCell.innerHTML = `<span class="date-number">${day}</span>`;
+        
+        const dateKey = `${year}-${(month + 1).toString().padStart(2, '0')}-${day.toString().padStart(2, '0')}`;
+        const dayDate = new Date(year, month, day);
+
+        // Mark past days
+        if (dayDate < today) {
+            dayCell.classList.add('past-day');
+        }
+        // Mark the current day
+        if (dayDate.toDateString() === today.toDateString()) {
+            dayCell.classList.add('current-day');
+        }
+
+        // Handle task statuses (incomplete or completed)
+        if (tasks[dateKey]) {
+            const completedTasks = tasks[dateKey].filter(task => task.completed).length;
+            const totalTasks = tasks[dateKey].length;
+
+            if (completedTasks === totalTasks && totalTasks > 0) {
+                dayCell.classList.add('completed-tasks');
+            } else if (completedTasks < totalTasks && totalTasks > 0) {
+                dayCell.classList.add('incomplete-tasks');
+            }
+
+            tasks[dateKey].forEach(task => {
+                const taskDiv = document.createElement('div');
+                taskDiv.classList.add('task');
+                taskDiv.textContent = task.title;
+                dayCell.appendChild(taskDiv);
+            });
+        }
+
+        dayCell.addEventListener('click', (e) => openDayPopup(e, dateKey, dayCell));
+        calendarGrid.appendChild(dayCell);
     }
 }
 
-// Save task to LocalStorage
-function saveTaskToStorage(task) {
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks.push(task);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+// Function to open the task modal and add tasks
+function setupTaskModal() {
+    const modal = document.getElementById('task-modal');
+    const closeBtn = document.querySelector('.close-btn');
+    const taskForm = document.getElementById('task-form');
+    const taskDateInput = document.getElementById('task-date');
 
-// Get tasks from LocalStorage and display them
-function getTasksFromStorage() {
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks.forEach(task => addTaskToList(task));
-}
+    closeBtn.addEventListener('click', () => modal.style.display = 'none');
+    
+    taskForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const taskDate = taskDateInput.value;
+        const taskTitle = document.getElementById('task-title').value;
 
-// Remove task from LocalStorage
-function removeTaskFromStorage(taskTitle) {
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks = tasks.filter(task => task.title !== taskTitle);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-}
+        if (!tasks[taskDate]) {
+            tasks[taskDate] = [];
+        }
 
-// Update task in LocalStorage
-function updateTaskInStorage(updatedTask) {
-    let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
-    tasks = tasks.map(task => task.title === updatedTask.title ? updatedTask : task);
-    localStorage.setItem('tasks', JSON.stringify(tasks));
-}
-
-// Add task to the list (updated with delete button and event for editing)
-function addTaskToList(task) {
-    const taskItem = document.createElement('div');
-    taskItem.className = 'task-item';
-
-    taskItem.innerHTML = `
-        <h3>${task.title}</h3>
-        <p>${task.description}</p>
-        <p><strong>Deadline:</strong> ${task.deadline}</p>
-        <p><strong>Priority:</strong> ${task.priority}</p>
-        <button class="deleteTaskBtn">Delete</button>
-    `;
-
-    taskList.appendChild(taskItem);
-
-    // Add event listener for delete button
-    taskItem.querySelector('.deleteTaskBtn').addEventListener('click', function() {
-        taskItem.remove();
-        removeTaskFromStorage(task.title);
-    });
-
-    // Attach event listener to edit task on title or description click
-    taskItem.querySelector('h3').addEventListener('click', function() {
-        editTask(taskItem, task);
-    });
-    taskItem.querySelector('p').addEventListener('click', function() {
-        editTask(taskItem, task);
+        tasks[taskDate].push({ title: taskTitle, completed: false });
+        modal.style.display = 'none';
+        loadCalendar(new Date(taskDate));  // Reload calendar to show updated task
     });
 }
 
-// Open modal with task data for editing
-function editTask(taskItem, task) {
-    taskModal.style.display = 'block';
+// Function to open the day information popup
+function openDayPopup(event, dateKey, dayCell) {
+    const popup = document.getElementById('day-popup');
+    const popupDate = document.getElementById('popup-date');
+    const popupTasks = document.getElementById('popup-tasks');
+    
+    popupDate.textContent = `Tasks for ${dateKey}`;
+    popupTasks.innerHTML = '';
 
-    document.getElementById('title').value = task.title;
-    document.getElementById('description').value = task.description;
-    document.getElementById('deadline').value = task.deadline;
-    document.getElementById('priority').value = task.priority;
+    if (tasks[dateKey]) {
+        tasks[dateKey].forEach((task, index) => {
+            const taskItem = document.createElement('li');
+            taskItem.textContent = task.title;
+            popupTasks.appendChild(taskItem);
 
-    // Update task on submit
-    taskForm.onsubmit = function(e) {
-        e.preventDefault();
-
-        task.title = document.getElementById('title').value;
-        task.description = document.getElementById('description').value;
-        task.deadline = document.getElementById('deadline').value;
-        task.priority = document.getElementById('priority').value;
-
-        taskItem.innerHTML = `
-            <h3>${task.title}</h3>
-            <p>${task.description}</p>
-            <p><strong>Deadline:</strong> ${task.deadline}</p>
-            <p><strong>Priority:</strong> ${task.priority}</p>
-            <button class="deleteTaskBtn">Delete</button>
-        `;
-
-        taskModal.style.display = 'none';
-        taskForm.reset();
-
-        // Update event listener for delete button after editing
-        taskItem.querySelector('.deleteTaskBtn').addEventListener('click', function() {
-            taskItem.remove();
-            removeTaskFromStorage(task.title);
+            // Add a button to mark the task as completed
+            const completeBtn = document.createElement('button');
+            completeBtn.textContent = task.completed ? 'Completed' : 'Mark as Complete';
+            completeBtn.addEventListener('click', () => {
+                tasks[dateKey][index].completed = !task.completed;  // Toggle completion
+                loadCalendar(new Date(dateKey));  // Reload calendar to reflect changes
+            });
+            taskItem.appendChild(completeBtn);
         });
+    } else {
+        const noTasksItem = document.createElement('li');
+        noTasksItem.textContent = 'No tasks for this day';
+        popupTasks.appendChild(noTasksItem);
+    }
 
-        updateTaskInStorage(task);
-    };
+    // Position popup near the clicked day
+    const rect = dayCell.getBoundingClientRect();
+    popup.style.top = `${rect.top + window.scrollY + 50}px`;
+    popup.style.left = `${rect.left + window.scrollX}px`;
+    popup.style.display = 'block';
 }
 
-// Add task
-taskForm.addEventListener('submit', function(e) {
-    e.preventDefault();
-
-    const title = document.getElementById('title').value;
-    const description = document.getElementById('description').value;
-    const deadline = document.getElementById('deadline').value;
-    const priority = document.getElementById('priority').value;
-
-    const task = {
-        title,
-        description,
-        deadline,
-        priority
-    };
-
-    addTaskToList(task);
-    saveTaskToStorage(task);  // Save to LocalStorage
-    taskModal.style.display = 'none';
-    taskForm.reset();
-});
-
-// Load tasks when the page loads
-window.onload = function() {
-    getTasksFromStorage();
+// Function to set up the event to close the popup
+function setupPopupCloseEvent() {
+    const popup = document.getElementById('day-popup');
+    const closePopupBtn = document.querySelector('.close-popup');
+    closePopupBtn.addEventListener('click', () => {
+        popup.style.display = 'none';
+    });
 }
