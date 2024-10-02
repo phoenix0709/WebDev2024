@@ -1,4 +1,3 @@
-// Get modal elements
 const taskModal = document.getElementById('taskModal');
 const addTaskBtn = document.getElementById('addTaskBtn');
 const closeModalBtn = document.getElementsByClassName('close')[0];
@@ -22,7 +21,7 @@ window.onclick = function(event) {
     }
 }
 
-// Save task to LocalStorage
+// Save task to LocalStorage(can be used for storage on the device when used offline)
 function saveTaskToStorage(task) {
     let tasks = JSON.parse(localStorage.getItem('tasks')) || [];
     tasks.push(task);
@@ -49,7 +48,7 @@ function updateTaskInStorage(updatedTask) {
     localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
-// Add task to the list (updated with delete button and event for editing)
+// Add task 
 function addTaskToList(task) {
     const taskItem = document.createElement('div');
     taskItem.className = 'task-item';
@@ -64,13 +63,13 @@ function addTaskToList(task) {
 
     taskList.appendChild(taskItem);
 
-    // Add event listener for delete button
+    //delete button
     taskItem.querySelector('.deleteTaskBtn').addEventListener('click', function() {
         taskItem.remove();
         removeTaskFromStorage(task.title);
     });
 
-    // Attach event listener to edit task on title or description click
+    //edit task on title or description click
     taskItem.querySelector('h3').addEventListener('click', function() {
         editTask(taskItem, task);
     });
@@ -88,7 +87,7 @@ function editTask(taskItem, task) {
     document.getElementById('deadline').value = task.deadline;
     document.getElementById('priority').value = task.priority;
 
-    // Update task on submit
+    // task on submit
     taskForm.onsubmit = function(e) {
         e.preventDefault();
 
@@ -108,7 +107,7 @@ function editTask(taskItem, task) {
         taskModal.style.display = 'none';
         taskForm.reset();
 
-        // Update event listener for delete button after editing
+        // delete button after editing
         taskItem.querySelector('.deleteTaskBtn').addEventListener('click', function() {
             taskItem.remove();
             removeTaskFromStorage(task.title);
@@ -144,3 +143,4 @@ taskForm.addEventListener('submit', function(e) {
 window.onload = function() {
     getTasksFromStorage();
 }
+//just demo version for project to shape the work 
