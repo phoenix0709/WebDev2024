@@ -4,6 +4,56 @@ ul {
     padding: 0;
 }
 
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 240px;
+    background: #c76e00;
+    padding: 6px 14px;
+}
+
+.sidebar .logo_content {
+    font-size: 25px;
+    color: whitesmoke;
+    display: flex;
+    align-items: center;
+}
+
+.sidebar ul {
+    margin-top: 20px;
+}
+
+.sidebar ul li {
+    height: 50px;
+    margin: 0px 7px;
+    line-height: 30px;
+}
+
+/* side bar text */
+.sidebar ul li a {
+    color: white;
+    align-items: center;
+    display: flex;
+    text-decoration: none;
+    transition: all 0.4s ease;
+    border-radius: 12px;
+}
+
+.sidebar ul li a:hover {
+    color: #c76e00;
+    background: whitesmoke;
+}
+
+/* side bar logo  */
+.sidebar ul li a i {
+    height: 50px;
+    min-width: 50px;
+    border-radius: 12px;
+    line-height: 50px;
+}
+
 .bx {
     font-size: 30px;
 }
