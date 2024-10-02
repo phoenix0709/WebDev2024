@@ -46,5 +46,6 @@ function deleteTask(taskElement) {
 }
 
 function nextPage() {
-    alert("Navigating to the next page!");
-}
+    window.location.href = "index.html";
+    window.location.replace("index.html");
+}   //js này dùng để chuyển trang và làm mới tại vị trí chuyển
