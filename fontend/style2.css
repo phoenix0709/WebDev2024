@@ -1,0 +1,98 @@
+/* Tổng thể trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f8ff;
+    margin: 0;
+    padding: 0;
+}
+
+/* Phần tiêu đề và thời gian */
+.header {
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.header h1 {
+    margin:10px;
+}
+
+.header p {
+    font-size: 1.2em;
+}
+
+/* Khu vực nội dung chính */
+.content {
+    padding: 20px;
+}
+
+/* Input và button thêm công việc */
+.task-input-section {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+#task-input {
+    padding: 10px;
+    width: 60%;
+    border: 2px solid #007bff;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Danh sách công việc */
+.task-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0 auto;
+    width: 60%;
+}
+
+.task-list li {
+    background-color: #eee;
+    margin: 5px 0;
+    padding: 15px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid #007bff;
+}
+
+.task-list li.completed {
+    text-decoration: line-through;
+    color: gray;
+    border-left: 5px solid #28a745;
+}
+
+/* Nút hoàn thành và xóa công việc */
+.task-list button {
+    margin-left: 10px;
+}
+
+button.remove {
+    background-color: #dc3545;
+}
+
+button.remove:hover {
+    background-color: #c82333;
+}
+.task-list .task-buttons{
+    display: flex;
+    gap: 10px
+}
