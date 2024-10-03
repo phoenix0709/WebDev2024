@@ -143,3 +143,4 @@ taskForm.addEventListener('submit', function(e) {
 window.onload = function() {
     getTasksFromStorage();
 }
+//just demo version for project to shape the work 
