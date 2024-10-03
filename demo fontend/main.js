@@ -144,3 +144,16 @@ taskForm.addEventListener('submit', function(e) {
 window.onload = function() {
     getTasksFromStorage();
 }
+
+// Get the calendar icon element
+const calendarIcon = document.getElementById('calendarIcon');
+
+// Add event listener to handle the click event
+calendarIcon.addEventListener('click', function() {
+    // You can replace this alert with any action you want
+    alert('Calendar icon clicked!');
+    
+    // Alternatively, you can redirect to another page
+    // window.location.href = 'calendar.html';
+});
+

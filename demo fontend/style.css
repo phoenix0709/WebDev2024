@@ -74,3 +74,7 @@ button.deleteTaskBtn {
 button.deleteTaskBtn:hover {
     background-color: darkred;
 }
+
+#addTaskBtn {
+    margin: 0 auto; /* Ensure button is centered */
+}
