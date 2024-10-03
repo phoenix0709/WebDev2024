@@ -10,7 +10,7 @@ Students are expected to:
 Student Info
 =======================
 
-* Name: Nguyễn Ngọc Lân
-* ID: Ba12-104
+* Name: Tường Duy Tuyên
+* ID: BA12-189
 * Group ID: 11
 * Project Name: Task Management App

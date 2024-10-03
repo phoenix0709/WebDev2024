@@ -171,3 +171,7 @@ function setupPopupCloseEvent() {
         popup.style.display = 'none';
     });
 }
+function goToIndex1() {
+    window.location.href = "index1.html";
+    window.location.replace("index1.html");
+} //js này dùng để chuyển trang và làm mới tại vị trí chuyển
