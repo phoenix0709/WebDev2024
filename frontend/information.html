@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Account Information</title>
+    <link rel="stylesheet" href="information.css">
+</head>
+<body>
+    <div class="account-info">
+        <h2>User Account Information</h2>
+        <div class="info">
+            <p><strong>Username:</strong> <span id="username">i don't know</span></p>
+            <p><strong>Email:</strong> <span id="email">i_don't_have@gmail.com</span></p>
+            <p><strong>Birth_of_date:</strong> <span id="joined">07/09/2003</span></p>
+        </div>
+        <button id="editBtn">Edit Information</button>
+
+        <div id="editForm" class="hidden">
+            <label for="usernameInput">Username:</label>
+            <input type="text" id="usernameInput" value="i don't know"><br>
+
+            <label for="emailInput">Email:</label>
+            <input type="email" id="emailInput" value="i_don't_have@gmail.com"><br>
+
+            <label for="joinedInput">Joined:</label>
+            <input type="date" id="07/09/2003" value="07/09/2003"><br>
+
+            <button id="saveBtn">Save</button>
+        </div>
+    </div>
+
+    <script src="information.js"></script>
+</body>
+</html>
