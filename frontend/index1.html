@@ -12,7 +12,7 @@
         <header>
             <h1>Task Management App</h1>
             <button id="addTaskBtn" onclick="openModal()">Add Task</button>
-            <button class="page-transition" onclick="nextPage()">Next Page</button>  <!-- vị trí nút chuyển trang: cái chỗ này đổi giúp tôi thành icon lịch thay tên function đi -->
+            <button class="page-transition" onclick="goToCalendar()">&#128197;</button> <!-- Changed to calendar icon -->
         </header>
 
         <!-- Task list section -->
@@ -50,5 +50,11 @@
     </div>
 
     <script src="main1.js"></script> <!-- Link to external JavaScript file -->
+    <script>
+        // Function to go to calendar page
+        function goToCalendar() {
+            window.location.href = "index.html"; // Transition to the calendar view
+        }
+    </script>
 </body>
 </html>
