@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Today's Tasks</title>
+    <link rel="stylesheet" href="TodayTask.css">
+</head>
+<body>
+    <header>
+        <h1>Today's Tasks</h1>
+        <button id="calendarBtn" onclick="goToCalendar()">&#128197;</button> <!-- Calendar icon button -->
+        <button id="addTaskBtn" onclick="goToAddTask()">Add Task</button>
+    </header>
+
+    <section id="taskList">
+        <p id="notask">there are no task for today</p>
+        <!-- Tasks for the day will be displayed here -->
+    </section>
+
+    <script src="TodayTask.js"></script>
+</body>
+</html>
