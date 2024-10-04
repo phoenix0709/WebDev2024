@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Task Management App</title>
+    <title>Calendar View</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <div class="app-container">
         <header class="app-header">
-            <button id="addTaskBtn" onclick="goToIndex1()">Add Task</button> <!-- nút chuyển trang -->
+            <button id="create-task-btn" onclick="goToTaskPage()">Go to Task List</button>
             <div class="date-controls">
                 <button id="prev-period-btn">&#9664; Previous</button>
                 <input type="date" id="date-picker">
@@ -17,9 +17,9 @@
             </div>
         </header>
         <aside class="sidebar">
-            <h3>Completed Tasks</h3>
-            <ul id="completed-tasks">
-                <!-- Completed tasks list -->
+            <h3>Incomplete Tasks</h3>
+            <ul id="incomplete-tasks">
+                <!-- Incomplete tasks will be dynamically populated here -->
             </ul>
         </aside>
         <main class="calendar-view month-view">
@@ -59,5 +59,11 @@
     </div>
 
     <script src="main.js"></script>
+    <script>
+        // Function to go back to task list page
+        function goToTaskPage() {
+            window.location.href = "index1.html"; // Transition back to task list
+        }
+    </script>
 </body>
 </html>

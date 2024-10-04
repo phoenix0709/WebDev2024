@@ -4,31 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management App</title>
-    <link rel="stylesheet" href="style2.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="style1.css"> <!-- Link to external CSS file -->
 </head>
 <body>
-    <header>
-        <div style="display: flex; align-items: center; justify-content: space-between;">
-            <button id="calendarIcon" style="background: none; border: solid; cursor: pointer;">
-                <i class="fas fa-calendar-alt" style="font-size: 24px; margin-left: 10px;"></i>
-            </button>
-            <h1 style="flex-grow: 1; text-align: center;">Task Management App</h1>
-            <button id="addTaskBtn">Add Task</button>
-        </div>
-    
-    </header>
+    <div class="container">
+        <!-- Header section -->
+        <header>
+            <h1>Task Management App</h1>
+            <button id="addTaskBtn" onclick="openModal()">Add Task</button>
+            <button class="page-transition" onclick="goToCalendar()">&#128197;</button> <!-- Changed to calendar icon -->
+        </header>
 
-    <section id="taskList">
-        <!-- Task items will be appended here by JavaScript -->
-    </section>
+        <!-- Task list section -->
+        <section id="taskList">
+            <div class="section-header">Your Tasks</div>
+            <!-- Task items will be appended here by JavaScript -->
+        </section>
+    </div>
 
     <!-- Task Modal -->
     <div id="taskModal" class="modal">
         <div class="modal-content">
-            <span class="close">&times;</span>
+            <span class="close" onclick="closeModal()">&times;</span>
             <h2>Add a New Task</h2>
-            <form id="taskForm">
+            <form id="taskForm" onsubmit="saveTask(event)">
                 <label for="title">Task Title</label>
                 <input type="text" id="title" name="title" required>
 
@@ -50,6 +49,12 @@
         </div>
     </div>
 
-    <script src="script2.js"></script>
+    <script src="main1.js"></script> <!-- Link to external JavaScript file -->
+    <script>
+        // Function to go to calendar page
+        function goToCalendar() {
+            window.location.href = "index.html"; // Transition to the calendar view
+        }
+    </script>
 </body>
 </html>
