@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     loadCalendar(new Date());
     setupTaskModal();
     setupPopupCloseEvent();
+    loadIncompleteTasks(); // Load incomplete tasks when the page loads
 });
 
 let tasks = {};  // Object to store tasks with date keys
@@ -123,7 +124,35 @@ function setupTaskModal() {
         tasks[taskDate].push({ title: taskTitle, completed: false });
         modal.style.display = 'none';
         loadCalendar(new Date(taskDate));  // Reload calendar to show updated task
+        loadIncompleteTasks();  // Reload incomplete tasks list
     });
+}
+
+// Function to load incomplete tasks into the sidebar
+function loadIncompleteTasks() {
+    const incompleteTasksList = document.getElementById('incomplete-tasks');
+    incompleteTasksList.innerHTML = '';  // Clear the list
+
+    for (let dateKey in tasks) {
+        tasks[dateKey].forEach(task => {
+            if (!task.completed) {  // Check if task is incomplete
+                const taskItem = document.createElement('li');
+                taskItem.textContent = `${task.title} (${dateKey})`;
+
+                // Add a button to mark as completed
+                const completeBtn = document.createElement('button');
+                completeBtn.textContent = 'Mark as Complete';
+                completeBtn.addEventListener('click', () => {
+                    task.completed = true;
+                    loadIncompleteTasks();  // Reload incomplete tasks after completion
+                    loadCalendar(new Date());  // Refresh calendar
+                });
+
+                taskItem.appendChild(completeBtn);
+                incompleteTasksList.appendChild(taskItem);
+            }
+        });
+    }
 }
 
 // Function to open the day information popup
@@ -147,6 +176,7 @@ function openDayPopup(event, dateKey, dayCell) {
             completeBtn.addEventListener('click', () => {
                 tasks[dateKey][index].completed = !task.completed;  // Toggle completion
                 loadCalendar(new Date(dateKey));  // Reload calendar to reflect changes
+                loadIncompleteTasks();  // Reload incomplete tasks list
             });
             taskItem.appendChild(completeBtn);
         });
@@ -171,7 +201,3 @@ function setupPopupCloseEvent() {
         popup.style.display = 'none';
     });
 }
-function goToIndex1() {
-    window.location.href = "index1.html";
-    window.location.replace("index1.html");
-} //js này dùng để chuyển trang và làm mới tại vị trí chuyển
