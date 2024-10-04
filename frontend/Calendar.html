@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calendar View</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="Calendar.css">
 </head>
 <body>
     <div class="app-container">
@@ -14,6 +14,16 @@
                 <button id="prev-period-btn">&#9664; Previous</button>
                 <input type="date" id="date-picker">
                 <button id="next-period-btn">Next &#9654;</button>
+            </div>
+
+            <!-- Settings Icon and Dropdown -->
+            <div class="settings">
+                <button id="settings-btn" class="settings-icon">&#9881;</button> <!-- Settings icon -->
+                <div id="settings-dropdown" class="settings-dropdown">
+                    <p id="user-fullname">Full Name: John Doe</p>
+                    <p id="user-email">Email: john.doe@example.com</p>
+                    <button id="account-btn">Account</button> <!-- Redirect button -->
+                </div>
             </div>
         </header>
         <aside class="sidebar">
@@ -58,12 +68,22 @@
         </div>
     </div>
 
-    <script src="main.js"></script>
+    <script src="Calendar.js"></script>
     <script>
         // Function to go back to task list page
         function goToTaskPage() {
-            window.location.href = "index1.html"; // Transition back to task list
+            window.location.href = "Addtask.html"; // Transition back to task list
         }
+
+        // Settings button and redirect to account page
+        document.getElementById('settings-btn').addEventListener('click', function() {
+            const settings = document.querySelector('.settings');
+            settings.classList.toggle('show');
+        });
+
+        document.getElementById('account-btn').addEventListener('click', function() {
+            window.location.href = 'information.html'; // Replace with your desired URL
+        });
     </script>
 </body>
 </html>

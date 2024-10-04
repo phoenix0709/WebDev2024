@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management App</title>
-    <link rel="stylesheet" href="style1.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="Addtask.css"> <!-- Link to external CSS file -->
 </head>
 <body>
     <div class="container">
@@ -12,7 +12,17 @@
         <header>
             <h1>Task Management App</h1>
             <button id="addTaskBtn" onclick="openModal()">Add Task</button>
-            <button class="page-transition" onclick="goToCalendar()">&#128197;</button> <!-- Changed to calendar icon -->
+            <button class="page-transition" onclick="goToCalendar()">&#128197;</button> <!-- Calendar icon -->
+
+            <!-- Settings Icon and Dropdown -->
+            <div class="settings">
+                <button id="settings-btn" class="settings-icon">&#9881;</button> <!-- Settings icon -->
+                <div id="settings-dropdown" class="settings-dropdown">
+                    <p id="user-fullname">Full Name: John Doe</p>
+                    <p id="user-email">Email: john.doe@example.com</p>
+                    <button id="account-btn">Account</button> <!-- Redirect button -->
+                </div>
+            </div>
         </header>
 
         <!-- Task list section -->
@@ -49,12 +59,22 @@
         </div>
     </div>
 
-    <script src="main1.js"></script> <!-- Link to external JavaScript file -->
+    <script src="Addtask.js"></script> <!-- Link to external JavaScript file -->
     <script>
         // Function to go to calendar page
         function goToCalendar() {
-            window.location.href = "index.html"; // Transition to the calendar view
+            window.location.href = "Calendar.html"; // Transition to the calendar view
         }
+
+        // Settings button and redirect to account page
+        document.getElementById('settings-btn').addEventListener('click', function() {
+            const settings = document.querySelector('.settings');
+            settings.classList.toggle('show');
+        });
+
+        document.getElementById('account-btn').addEventListener('click', function() {
+            window.location.href = 'information.html'; // Replace with your desired URL
+        });
     </script>
 </body>
 </html>

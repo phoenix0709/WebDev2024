@@ -339,3 +339,53 @@ form button:hover {
 .close-btn:hover {
     color: #000;
 }
+/* Style for settings button */
+.settings {
+    position: relative;
+    display: inline-block;
+    margin-right: 20px;
+}
+
+.settings-icon {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* Dropdown content */
+.settings-dropdown {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: white;
+    color: black;
+    min-width: 200px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+.settings-dropdown p {
+    margin: 10px 0;
+}
+
+.settings-dropdown button {
+    padding: 10px;
+    background-color: #38D7E7;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.settings-dropdown button:hover {
+    background-color: #32c1d1;
+}
+
+/* Show dropdown when the settings button is clicked */
+.settings.show .settings-dropdown {
+    display: block;
+}

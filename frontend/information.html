@@ -3,31 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Account Information</title>
+    <title>Personal Information</title>
     <link rel="stylesheet" href="information.css">
 </head>
 <body>
     <div class="account-info">
-        <h2>User Account Information</h2>
+        <h2>Personal Information</h2>
         <div class="info">
-            <p><strong>Username:</strong> <span id="username">i don't know</span></p>
-            <p><strong>Email:</strong> <span id="email">i_don't_have@gmail.com</span></p>
-            <p><strong>Birth_of_date:</strong> <span id="joined">07/09/2003</span></p>
+            <p><strong>Full Name:</strong> <span id="fullName"></span></p>
+            <p><strong>Username:</strong> <span id="username"></span></p>
+            <p><strong>Telephone:</strong> <span id="phone"></span></p>
+            <p><strong>Email:</strong> <span id="email"></span></p>
+            <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
+            <p><strong>Sex:</strong> <span id="gender"></span></p>
         </div>
-        <button id="editBtn">Edit Information</button>
+        <button id="editBtn">Edit</button>
 
+        <!-- Edit Form -->
         <div id="editForm" class="hidden">
+            <label for="fullNameInput">Full Name:</label>
+            <input type="text" id="fullNameInput" value=""><br>
+
             <label for="usernameInput">Username:</label>
-            <input type="text" id="usernameInput" value="i don't know"><br>
+            <input type="text" id="usernameInput" value=""><br>
 
+            <label for="phoneInput">Telephone:</label>
+            <input type="text" id="phoneInput" value=""><br>
+                
             <label for="emailInput">Email:</label>
-            <input type="email" id="emailInput" value="i_don't_have@gmail.com"><br>
+            <input type="email" id="emailInput" value=""><br>
 
-            <label for="joinedInput">Joined:</label>
-            <input type="date" id="07/09/2003" value="07/09/2003"><br>
+            <label for="dobInput">Date of Birth:</label>
+            <input type="date" id="dobInput" value=""><br>
+
+            <!-- Updated Gender Selection -->
+            <label for="genderInput">Sex:</label>
+            <select id="genderInput">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select><br>
 
             <button id="saveBtn">Save</button>
         </div>
+
+        <!-- Back Buttons -->
+        <button id="backToTaskBtn">Back to Add Task</button>
+        <button id="backToCalendarBtn">Back to Calendar</button>
     </div>
 
     <script src="information.js"></script>
