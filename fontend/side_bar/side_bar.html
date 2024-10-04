@@ -1,8 +1,12 @@
+<!DOCTYPE html>
 <html>
     <head>
             <!-- Boxicons CSS -->
         <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <link rel="stylesheet" href="side_bar_style.css">
+        <!-- absolute path -->
+        <link href='http://127.0.0.1:5500/fontend/side_bar/side_bar_style.css' rel='stylesheet'>
+        <!-- relative path -->
+        <link href='side_bar_style.css' rel='stylesheet'>
     </head>
     
     <body>
@@ -14,7 +18,7 @@
             <!-- list of side bar components (susceptible to changes) -->
             <ul class="navi">
                 <li>
-                     <a href="side_bar.html"> <!-- hightlight the current bar based on the current href -->
+                    <a href="http://127.0.0.1:5500/start.html" > <!-- hightlight the current bar based on the current href -->
                         <i class='bx bxs-dashboard' ></i>
                         <span class="name">
                             Dashboard
@@ -22,7 +26,7 @@
                     </a>
                 </li>
                 <li>
-                    <a href="#">
+                    <a href="http://127.0.0.1:5500/completed_task.html" >
                         <i class='bx bx-task' ></i>
                         <span class="name">
                             Completed
@@ -32,6 +36,6 @@
             </ul>
         </div>
 
-        <script src="bar.js"></script>
+        <script src="http://127.0.0.1:5500/fontend/side_bar/bar.js"></script>
     </body>
 </html>

@@ -1,6 +1,8 @@
-// hightlight the bar of the current page is on
+console.log("here");
 document.querySelectorAll('.navi li a').forEach(link => {
+    console.log("link: " + link.href)
+    console.log("window: " + window.location.href)
     if (link.href === window.location.href) {
-        link.parentElement.classList.add('active');
+        link.classList.add('active');
     }
 });
