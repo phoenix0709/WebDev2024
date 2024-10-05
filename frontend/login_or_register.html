@@ -1,67 +1,67 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Task Management </title>
+<head>
+    <title>Task Management</title>
     <style>
-       body {
-        background-color: #f2f2f2;
-        font-family: Arial, sans-serif;
-      }
-      
-      h1 {
-        text-align: center;
-        color: #333;
-      }
-      
-      .form-container {
-        max-width: 400px;
-        margin: 0 auto;
-        background-color: #fff;
-        padding: 20px;
-        border-radius: 5px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-      
-      .form-container h2 {
-        margin-top: 0;
-        color: #333;
-      }
-      
-      .form-container label {
-        display: block;
-        margin-bottom: 5px;
-        color: #555;
-      }
-      
-      .form-container input[type="text"],
-      .form-container input[type="password"] {
-        width: 100%;
-        padding: 8px;
-        border: 1px solid #ccc;
-        border-radius: 3px;
-        margin-bottom: 10px;
-      }
-      
-      .form-container button[type="submit"] {
-        background-color: #4CAF50;
-        color: #fff;
-        border: none;
-        padding: 10px 20px;
-        border-radius: 3px;
-        cursor: pointer;
-      }
-      
-      .form-container button[type="submit"]:hover {
-        background-color: #45a049;
-      }
+        body {
+            background-color: #f2f2f2;
+            font-family: Arial, sans-serif;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+        
+        .form-container {
+            max-width: 400px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .form-container h2 {
+            margin-top: 0;
+            color: #333;
+        }
+        
+        .form-container label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        
+        .form-container input[type="text"],
+        .form-container input[type="password"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            margin-bottom: 10px;
+        }
+        
+        .form-container button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+        
+        .form-container button[type="submit"]:hover {
+            background-color: #45a049;
+        }
     </style>
-  </head>
-  <body>
+</head>
+<body>
     <h1>Task Management</h1>
     
     <div class="form-container" id="login-form">
         <h2>Login</h2>
-        <form id="login-form" method="POST" >
+        <form id="login-form" method="POST" onsubmit="login(event)">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
             
@@ -75,7 +75,7 @@
     
     <div class="form-container" id="register-form" style="display: none;">
         <h2>Register</h2>
-        <form id="register-form" method="POST" >
+        <form id="register-form" method="POST" onsubmit="register(event)">
             <label for="full-name">Full name:</label>
             <input type="text" id="full-name" name="full-name" required>
 
@@ -102,7 +102,6 @@
             <input type="radio" name="gender" value="female"> Female<br>
             <input type="radio" name="gender" value="other"> Other
             
-
             <button type="submit">Register</button>
         </form>
         <p>Already have an account? <button onclick="showLoginForm()">Login</button></p>
@@ -117,6 +116,37 @@
         function showLoginForm() {
             document.getElementById("register-form").style.display = "none";
             document.getElementById("login-form").style.display = "block";
+        }
+
+        function register(event) {
+            event.preventDefault();
+            const fullName = document.getElementById('full-name').value;
+            const username = document.getElementById('new-username').value;
+            const password = document.getElementById('new-password').value;
+            
+            // Save user data to localStorage
+            const userData = {
+                fullName,
+                username,
+                password
+            };
+            localStorage.setItem(username, JSON.stringify(userData));
+            alert('Registration successful! You can now log in.');
+            showLoginForm();
+        }
+
+        function login(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const storedUserData = JSON.parse(localStorage.getItem(username));
+            
+            if (storedUserData && storedUserData.password === password) {
+                // Redirect to the addtask page
+                window.location.href = 'Addtask.html';
+            } else {
+                alert('Invalid username or password. Please try again.');
+            }
         }
     </script>
 </body>

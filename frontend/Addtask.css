@@ -208,3 +208,18 @@ form button:hover {
 .settings.show .settings-dropdown {
     display: block;
 }
+.page-transition-left {
+    position: absolute;
+    top: 20px;
+    left: 25px;
+    background-color: #ffa07a;
+    padding: 10px 20px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.page-transition-left:hover {
+    background-color: #ff8c66;
+}

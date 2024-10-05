@@ -201,3 +201,26 @@ function setupPopupCloseEvent() {
         popup.style.display = 'none';
     });
 }
+// Function to go back to task list page
+function goToTaskPage() {
+    window.location.href = "Addtask.html"; // Transition back to task list
+}
+
+// Settings button and redirect to account page
+document.getElementById('settings-btn').addEventListener('click', function() {
+    const settings = document.querySelector('.settings');
+    settings.classList.toggle('show');
+});
+
+document.getElementById('account-btn').addEventListener('click', function() {
+    window.location.href = 'information.html'; // Replace with your desired URL
+});
+
+// Ensure the above functions are called after the DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    // Attach event listeners after the DOM has fully loaded
+    document.getElementById('create-task-btn').addEventListener('click', goToTaskPage);
+});
+function goToTodayTasks() {
+    window.location.href = "TodayTask.html"; // Redirect to Today's Tasks page
+}

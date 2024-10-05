@@ -49,8 +49,10 @@
                 <ul id="popup-tasks">
                     <!-- Task details will be dynamically added here -->
                 </ul>
+                <button id="gotoTodayTasksBtn" onclick="goToTodayTasks()">&#128197; Today's Tasks</button> <!-- New Button -->
             </div>
         </div>
+        
 
         <!-- Modal for Adding Tasks -->
         <div id="task-modal" class="modal">
@@ -67,23 +69,6 @@
             </div>
         </div>
     </div>
-
     <script src="Calendar.js"></script>
-    <script>
-        // Function to go back to task list page
-        function goToTaskPage() {
-            window.location.href = "Addtask.html"; // Transition back to task list
-        }
-
-        // Settings button and redirect to account page
-        document.getElementById('settings-btn').addEventListener('click', function() {
-            const settings = document.querySelector('.settings');
-            settings.classList.toggle('show');
-        });
-
-        document.getElementById('account-btn').addEventListener('click', function() {
-            window.location.href = 'information.html'; // Replace with your desired URL
-        });
-    </script>
 </body>
 </html>
