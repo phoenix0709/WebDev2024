@@ -9,51 +9,91 @@
 <body>
     <div class="account-info">
         <h2>Personal Information</h2>
-        <div class="info">
-            <p><strong>Full Name:</strong> <span id="fullName"></span></p>
-            <p><strong>Username:</strong> <span id="username"></span></p>
-            <p><strong>Telephone:</strong> <span id="phone"></span></p>
-            <p><strong>Email:</strong> <span id="email"></span></p>
-            <p><strong>Date of Birth:</strong> <span id="dob"></span></p>
-            <p><strong>Sex:</strong> <span id="gender"></span></p>
+        <div class="info-container">
+            <div class="info">
+                <div class="info-item">
+                    <strong>Full Name:</strong>
+                    <span id="fullName"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Username:</strong>
+                    <span id="username"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Telephone:</strong>
+                    <span id="phone"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Email:</strong>
+                    <span id="email"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Date of Birth:</strong>
+                    <span id="dob"></span>
+                </div>
+                <div class="info-item">
+                    <strong>Sex:</strong>
+                    <span id="gender"></span>
+                </div>
+            </div>
         </div>
         <button id="editBtn">Edit</button>
         <button id="changePasswordBtn">Change Password</button>
 
         <div id="editForm" class="hidden">
-            <label for="fullNameInput">Full Name:</label>
-            <input type="text" id="fullNameInput" value=""><br>
-            <label for="usernameInput">Username:</label>
-            <input type="text" id="usernameInput" value=""><br>
-            <label for="phoneInput">Telephone:</label>
-            <input type="text" id="phoneInput" value=""><br>
-            <label for="emailInput">Email:</label>
-            <input type="email" id="emailInput" value=""><br>
-            <label for="dobInput">Date of Birth:</label>
-            <input type="date" id="dobInput" value=""><br>
-            <label for="genderInput">Sex:</label>
-            <select id="genderInput">
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
-                <option value="Other">Other</option>
-            </select><br>
+            <div class="form-group">
+                <label for="fullNameInput">Full Name:</label>
+                <input type="text" id="fullNameInput" value="">
+            </div>
+            <div class="form-group">
+                <label for="usernameInput">Username:</label>
+                <input type="text" id="usernameInput" value="">
+            </div>
+            <div class="form-group">
+                <label for="phoneInput">Telephone:</label>
+                <input type="text" id="phoneInput" value="">
+            </div>
+            <div class="form-group">
+                <label for="emailInput">Email:</label>
+                <input type="email" id="emailInput" value="">
+            </div>
+            <div class="form-group">
+                <label for="dobInput">Date of Birth:</label>
+                <input type="date" id="dobInput" value="">
+            </div>
+            <div class="form-group">
+                <label for="genderInput">Sex:</label>
+                <select id="genderInput">
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+            </div>
             <button id="saveBtn">Save</button>
         </div>
 
         <div id="changePasswordPopup" class="hidden popup">
             <h3>Change Password</h3>
-            <label for="oldPasswordInput">Old Password:</label>
-            <input type="password" id="oldPasswordInput" required><br>
-            <label for="newPasswordInput">New Password:</label>
-            <input type="password" id="newPasswordInput" required><br>
-            <label for="confirmPasswordInput">Confirm New Password:</label>
-            <input type="password" id="confirmPasswordInput" required><br>
+            <div class="form-group">
+                <label for="oldPasswordInput">Old Password:</label>
+                <input type="password" id="oldPasswordInput" required>
+            </div>
+            <div class="form-group">
+                <label for="newPasswordInput">New Password:</label>
+                <input type="password" id="newPasswordInput" required>
+            </div>
+            <div class="form-group">
+                <label for="confirmPasswordInput">Confirm New Password:</label>
+                <input type="password" id="confirmPasswordInput" required>
+            </div>
             <button id="submitChangePasswordBtn">Submit</button>
             <button id="closeChangePasswordBtn">Close</button>
         </div>
 
-        <button id="backToTaskBtn">Back to Add Task</button>
-        <button id="backToCalendarBtn">Back to Calendar</button>
+        <div class="button-container">
+            <button id="backToTaskBtn">Back to Add Task</button>
+            <button id="backToCalendarBtn">Back to Calendar</button>
+        </div>
     </div>
 
     <script src="information.js"></script>

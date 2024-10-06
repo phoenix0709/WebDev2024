@@ -21,10 +21,20 @@ body {
     font-weight: bold;
 }
 
-.info p {
-    font-size: 18px;
-    margin: 15px 0;
-    color: #000;
+.info-container {
+    margin-bottom: 20px;
+}
+
+.info-item {
+    background-color: #E0F7FA; 
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.info-item strong {
+    color: #00796B; 
+    display: inline-block;
 }
 
 button {
@@ -47,21 +57,37 @@ button:hover {
     display: none;
 }
 
-#editForm {
-    margin-top: 20px;
+.form-group {
+    margin-bottom: 15px;
 }
 
-#editForm label {
+.form-group label {
     font-size: 16px;
-    margin-bottom: 8px;
+    display: block;
+    margin-bottom: 5px;
 }
 
-#editForm input {
+.form-group input, .form-group select {
     width: 100%;
     padding: 10px;
     margin-bottom: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: center; 
+    gap: 10px; 
+    margin-top: 20px; 
+}
+
+.button-container button {
+    width: auto; 
+}
+
+#editForm {
+    margin-top: 20px;
 }
 
 .popup {
