@@ -48,7 +48,7 @@ function deleteTask(taskElement) {
 function nextPage() {
     window.location.href = "index.html";
     window.location.replace("index.html");
-}   //js này dùng để chuyển trang và làm mới tại vị trí chuyển
+}   
 function goToTodayTasks() {
     window.location.href = "TodayTask.html"; // Redirect to the Today's Tasks page
 }
