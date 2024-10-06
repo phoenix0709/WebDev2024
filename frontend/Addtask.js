@@ -52,3 +52,16 @@ function nextPage() {
 function goToTodayTasks() {
     window.location.href = "TodayTask.html"; // Redirect to the Today's Tasks page
 }
+function goToCalendar() {
+    window.location.href = "Calendar.html"; // Transition to the calendar view
+}
+
+// Settings button and redirect to account page
+document.getElementById('settings-btn').addEventListener('click', function() {
+    const settings = document.querySelector('.settings');
+    settings.classList.toggle('show');
+});
+
+document.getElementById('account-btn').addEventListener('click', function() {
+    window.location.href = 'information.html'; // Replace with your desired URL
+});

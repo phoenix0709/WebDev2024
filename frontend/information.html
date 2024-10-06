@@ -18,36 +18,40 @@
             <p><strong>Sex:</strong> <span id="gender"></span></p>
         </div>
         <button id="editBtn">Edit</button>
+        <button id="changePasswordBtn">Change Password</button>
 
-        <!-- Edit Form -->
         <div id="editForm" class="hidden">
             <label for="fullNameInput">Full Name:</label>
             <input type="text" id="fullNameInput" value=""><br>
-
             <label for="usernameInput">Username:</label>
             <input type="text" id="usernameInput" value=""><br>
-
             <label for="phoneInput">Telephone:</label>
             <input type="text" id="phoneInput" value=""><br>
-                
             <label for="emailInput">Email:</label>
             <input type="email" id="emailInput" value=""><br>
-
             <label for="dobInput">Date of Birth:</label>
             <input type="date" id="dobInput" value=""><br>
-
-            <!-- Updated Gender Selection -->
             <label for="genderInput">Sex:</label>
             <select id="genderInput">
                 <option value="Male">Male</option>
                 <option value="Female">Female</option>
                 <option value="Other">Other</option>
             </select><br>
-
             <button id="saveBtn">Save</button>
         </div>
 
-        <!-- Back Buttons -->
+        <div id="changePasswordPopup" class="hidden popup">
+            <h3>Change Password</h3>
+            <label for="oldPasswordInput">Old Password:</label>
+            <input type="password" id="oldPasswordInput" required><br>
+            <label for="newPasswordInput">New Password:</label>
+            <input type="password" id="newPasswordInput" required><br>
+            <label for="confirmPasswordInput">Confirm New Password:</label>
+            <input type="password" id="confirmPasswordInput" required><br>
+            <button id="submitChangePasswordBtn">Submit</button>
+            <button id="closeChangePasswordBtn">Close</button>
+        </div>
+
         <button id="backToTaskBtn">Back to Add Task</button>
         <button id="backToCalendarBtn">Back to Calendar</button>
     </div>

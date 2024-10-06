@@ -16,45 +16,35 @@
                 <button id="next-period-btn">Next &#9654;</button>
             </div>
 
-            <!-- Settings Icon and Dropdown -->
             <div class="settings">
-                <button id="settings-btn" class="settings-icon">&#9881;</button> <!-- Settings icon -->
+                <button id="settings-btn" class="settings-icon">&#9881;</button>
                 <div id="settings-dropdown" class="settings-dropdown">
-                    <p id="user-fullname">Full Name: John Doe</p>
-                    <p id="user-email">Email: john.doe@example.com</p>
-                    <button id="account-btn">Account</button> <!-- Redirect button -->
+                    <p id="user-fullname">Full Name: hi hi</p>
+                    <p id="user-email">Email: hihi.doe@example.com</p>
+                    <button id="account-btn">Account</button> 
                 </div>
             </div>
         </header>
         <aside class="sidebar">
             <h3>Incomplete Tasks</h3>
-            <ul id="incomplete-tasks">
-                <!-- Incomplete tasks will be dynamically populated here -->
-            </ul>
+            <ul id="incomplete-tasks"></ul>
         </aside>
         <main class="calendar-view month-view">
-            <div class="day-labels">
-                <!-- Weekday labels will be dynamically created here -->
-            </div>
-            <div class="calendar-grid">
-                <!-- Calendar days will be dynamically added here -->
-            </div>
+            <div class="day-labels"></div>
+            <div class="calendar-grid"></div>
         </main>
 
-        <!-- Popup for Day Info -->
         <div id="day-popup" class="day-popup">
             <div class="popup-content">
                 <span class="close-popup">&times;</span>
                 <h3 id="popup-date"></h3>
                 <ul id="popup-tasks">
-                    <!-- Task details will be dynamically added here -->
                 </ul>
                 <button id="gotoTodayTasksBtn" onclick="goToTodayTasks()">&#128197; Today's Tasks</button> <!-- New Button -->
             </div>
         </div>
         
 
-        <!-- Modal for Adding Tasks -->
         <div id="task-modal" class="modal">
             <div class="modal-content">
                 <span class="close-btn">&times;</span>

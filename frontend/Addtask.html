@@ -4,35 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management App</title>
-    <link rel="stylesheet" href="Addtask.css"> <!-- Link to external CSS file -->
+    <link rel="stylesheet" href="Addtask.css"> 
 </head>
 <body>
     <div class="container">
-        <!-- Header section -->
+
         <header>
-            <button class="page-transition-left" onclick="goToTodayTasks()">&#128197; Today's Tasks</button> <!-- New button to go to Today's Tasks -->
+            <button class="page-transition-left" onclick="goToTodayTasks()">&#128197; Today's Tasks</button> 
             <h1>Task Management App</h1>
             <button id="addTaskBtn" onclick="openModal()">Add Task</button>
             <button class="page-transition" onclick="goToCalendar()">&#128197; Calendar</button>
-            <!-- Settings Icon and Dropdown -->
             <div class="settings">
-                <button id="settings-btn" class="settings-icon">&#9881;</button> <!-- Settings icon -->
+                <button id="settings-btn" class="settings-icon">&#9881;</button> 
                 <div id="settings-dropdown" class="settings-dropdown">
                     <p id="user-fullname">Full Name: John Doe</p>
                     <p id="user-email">Email: john.doe@example.com</p>
-                    <button id="account-btn">Account</button> <!-- Redirect button -->
+                    <button id="account-btn">Account</button> 
                 </div>
             </div>
         </header>
 
-        <!-- Task list section -->
         <section id="taskList">
             <div class="section-header">Your Tasks</div>
-            <!-- Task items will be appended here by JavaScript -->
         </section>
     </div>
 
-    <!-- Task Modal -->
     <div id="taskModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeModal()">&times;</span>
@@ -59,22 +55,6 @@
         </div>
     </div>
 
-    <script src="Addtask.js"></script> <!-- Link to external JavaScript file -->
-    <script>
-        // Function to go to calendar page
-        function goToCalendar() {
-            window.location.href = "Calendar.html"; // Transition to the calendar view
-        }
-
-        // Settings button and redirect to account page
-        document.getElementById('settings-btn').addEventListener('click', function() {
-            const settings = document.querySelector('.settings');
-            settings.classList.toggle('show');
-        });
-
-        document.getElementById('account-btn').addEventListener('click', function() {
-            window.location.href = 'information.html'; // Replace with your desired URL
-        });
-    </script>
+    <script src="Addtask.js"></script> 
 </body>
 </html>
