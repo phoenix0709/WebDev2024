@@ -56,3 +56,8 @@ document.getElementById("backToTaskBtn").addEventListener("click", function() {
 document.getElementById("backToCalendarBtn").addEventListener("click", function() {
     window.location.href = "Calendar.html"; // Navigate to the Calendar page
 });
+
+// Back to register page
+document.getElementById("logoutBtn").addEventListener("click", function() {
+    window.location.href = "login_or_register.html"; // Navigate to the register page
+});
