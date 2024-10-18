@@ -114,3 +114,23 @@ button:hover {
     border: 1px solid #ddd;
     border-radius: 4px;
 }
+
+.avatar-container {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.avatar-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 20%;
+    object-fit: cover;
+    margin-bottom: 10px;
+    border: 2px solid #00796B;
+}
+
+#uploadAvatar {
+    display: block;
+    margin: 0 auto;
+    padding: 10px;
+}
